@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class MoveKing : MonoBehaviour {
+public class MoveKing : MonoBehaviour // required interface when using the OnPointerDown method.
+{
 
     // Use this for initialization
-	public float moveSpeed; 
+	public float moveSpeed;
+    public bool isSelected;
+    // public GameObject selected;
 
-	void Start () {
+    void Start () {
 		moveSpeed = 9;
+        isSelected = false;
 	}
 	
 	// Update is called once per frame
