@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class MoveKing : MonoBehaviour // required interface when using the OnPointerDown method.
+public class KingController : MonoBehaviour // required interface when using the OnPointerDown method.
 {
 
     // Use this for initialization
-	public float moveSpeed;
+	private float moveSpeed;
     public bool isSelected;
-    // public GameObject selected;
 
     void Start () {
 		moveSpeed = 9;
