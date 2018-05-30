@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class KingController : MonoBehaviour // required interface when using the OnPointerDown method.
+public class PieceController : MonoBehaviour // required interface when using the OnPointerDown method.
 {
 
     // Use this for initialization
@@ -14,7 +14,7 @@ public class KingController : MonoBehaviour // required interface when using the
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () { 
         if (isSelected && this.transform.parent.GetComponent<PlayerController>().isActive)
         {
             if (Input.GetKeyUp(KeyCode.UpArrow))
@@ -28,18 +28,6 @@ public class KingController : MonoBehaviour // required interface when using the
 
             if (Input.GetKeyUp(KeyCode.RightArrow))
                 MovePiece(Vector3.right);
-
-            if (Input.GetKeyUp(KeyCode.W))
-                transform.Translate((Vector3.forward + Vector3.left) * moveSpeed);
-
-            if (Input.GetKeyUp(KeyCode.S))
-                transform.Translate((Vector3.back + Vector3.right) * moveSpeed);
-
-            if (Input.GetKeyUp(KeyCode.A))
-                transform.Translate((Vector3.left + Vector3.back) * moveSpeed);
-
-            if (Input.GetKeyUp(KeyCode.D))
-                transform.Translate((Vector3.right + Vector3.forward) * moveSpeed);
         }
 
     }
@@ -47,6 +35,9 @@ public class KingController : MonoBehaviour // required interface when using the
     void MovePiece(Vector3 move)
     {
         transform.Translate(move * moveSpeed);
+        int x = Mathf.RoundToInt(move.x);
+        int z = Mathf.RoundToInt(move.z);
+        this.GetComponent<TileController>().SetCoordinates(x, z);
         this.transform.parent.transform.parent.GetComponent<Initialize>().SwitchActivePlayer();
     }
 
@@ -54,13 +45,16 @@ public class KingController : MonoBehaviour // required interface when using the
     {
         if (this.transform.parent.GetComponent<PlayerController>().isActive)
         {
-            Debug.Log(this.transform.parent.transform.parent.GetComponentsInChildren<KingController>().Length);
-            KingController[] pieceControllers = this.transform.parent.transform.parent.GetComponentsInChildren<KingController>();
-            foreach(KingController pieceController in pieceControllers)
+            PieceController[] pieceControllers = this.transform.parent.transform.parent.GetComponentsInChildren<PieceController>();
+            foreach(PieceController pieceController in pieceControllers)
             {
                 pieceController.isSelected = false;
             }
             this.isSelected = true;
         }
+    }
+    public void RemovePiece()
+    {
+        Destroy(this.gameObject);
     }
 }
