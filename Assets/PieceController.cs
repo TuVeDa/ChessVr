@@ -17,7 +17,7 @@ public class PieceController : MonoBehaviour // required interface when using th
 	void Update () { 
         if (isSelected && this.transform.parent.GetComponent<PlayerController>().isActive)
         {
-            if (Input.GetKeyUp(KeyCode.UpArrow))
+            if (Input.GetKeyUp(KeyCode.UpArrow))    
                 MovePiece(Vector3.forward);
 
             if (Input.GetKeyUp(KeyCode.DownArrow))
@@ -38,7 +38,7 @@ public class PieceController : MonoBehaviour // required interface when using th
         int x = Mathf.RoundToInt(move.x);
         int z = Mathf.RoundToInt(move.z);
         this.GetComponent<TileController>().SetCoordinates(x, z);
-        this.transform.parent.transform.parent.GetComponent<Initialize>().SwitchActivePlayer();
+        this.transform.parent.transform.parent.GetComponent<GameController>().SwitchActivePlayer();
     }
 
     void OnMouseDown()
