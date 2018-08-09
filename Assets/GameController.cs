@@ -29,15 +29,39 @@ public class GameController : MonoBehaviour {
     void BuildTiles(Transform board)
     {
         Debug.Log(board.position);
-        for (int x = 1; x <= 8; x++)
+        for (int x = -3; x <= 4; x++)
         {
-            for (int z = 1; z <= 8; z++)
+            for (int z = -3; z <= 4; z++)
             {
-                GameObject tile = new GameObject();
+                GameObject tile = Instantiate(Resources.Load("TileColider") as GameObject);
                 tile.name = "Tile";
-                tile.transform.position = new Vector3(x, 0, z);
                 Tiles.Add(tile);
+                var meshRenderer = tile.AddComponent<MeshRenderer>();
+                var meshFilter = tile.AddComponent<MeshFilter>();
+                var collider = tile.AddComponent<BoxCollider>();
+                collider.size = new Vector3(9, 9, 9);
+                float newX = (x * 9 + 1);
+                float newZ = (z * 9 + 2);
+                tile.transform.position = new Vector3(newX, 9, newZ);
+                tile.transform.parent = board;
             }
         }
     }
+
+
+    private void Update()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform.name == "Tile")
+            {
+                Debug.Log("This is a Tile");
+                Debug.Log(hit.transform.gameObject.transform.position);
+
+            }
+        }
+    }
+
 }
