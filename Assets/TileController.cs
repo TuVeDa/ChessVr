@@ -5,6 +5,7 @@ using UnityEngine;
 public class TileController : MonoBehaviour {
     public int x;
     public int z;
+    public bool isColored;
 
 	// Use this for initialization
 	void Start () {

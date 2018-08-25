@@ -36,10 +36,7 @@ public class GameController : MonoBehaviour {
                 GameObject tile = Instantiate(Resources.Load("TileColider") as GameObject);
                 tile.name = "Tile";
                 Tiles.Add(tile);
-                var meshRenderer = tile.AddComponent<MeshRenderer>();
-                var meshFilter = tile.AddComponent<MeshFilter>();
                 var collider = tile.AddComponent<BoxCollider>();
-                collider.size = new Vector3(9, 9, 9);
                 float newX = (x * 9 + 1);
                 float newZ = (z * 9 + 2);
                 tile.transform.position = new Vector3(newX, 9, newZ);
@@ -57,9 +54,7 @@ public class GameController : MonoBehaviour {
         {
             if (hit.transform.name == "Tile")
             {
-                Debug.Log("This is a Tile");
-                Debug.Log(hit.transform.gameObject.transform.position);
-
+                hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.blue;
             }
         }
     }
