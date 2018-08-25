@@ -33,10 +33,11 @@ public class GameController : MonoBehaviour {
         {
             for (int z = -3; z <= 4; z++)
             {
-                GameObject tile = Instantiate(Resources.Load("TileColider") as GameObject);
+                GameObject tile = Instantiate(Resources.Load("TilePrefab") as GameObject);
                 tile.name = "Tile";
                 Tiles.Add(tile);
                 var collider = tile.AddComponent<BoxCollider>();
+                tile.GetComponent<Renderer>().material.color = new Color(0,0,0,0);
                 float newX = (x * 9 + 1);
                 float newZ = (z * 9 + 2);
                 tile.transform.position = new Vector3(newX, 9, newZ);
@@ -54,6 +55,10 @@ public class GameController : MonoBehaviour {
         {
             if (hit.transform.name == "Tile")
             {
+                foreach (GameObject tile in Tiles)
+                {
+                    tile.GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
+                }
                 hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.blue;
             }
         }
