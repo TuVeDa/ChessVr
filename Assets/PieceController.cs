@@ -7,6 +7,8 @@ public class PieceController : MonoBehaviour // required interface when using th
     // Use this for initialization
 	private float moveSpeed;
     public bool isSelected;
+    public int x;
+    public int z;
 
     void Start () {
 		moveSpeed = 9;
@@ -37,7 +39,7 @@ public class PieceController : MonoBehaviour // required interface when using th
         transform.Translate(move * moveSpeed);
         int x = Mathf.RoundToInt(move.x);
         int z = Mathf.RoundToInt(move.z);
-        this.GetComponent<TileController>().SetCoordinates(x, z);
+        this.SetCoordinates(x, z);
         this.transform.parent.transform.parent.GetComponent<GameController>().SwitchActivePlayer();
     }
 
@@ -51,6 +53,31 @@ public class PieceController : MonoBehaviour // required interface when using th
                 pieceController.isSelected = false;
             }
             this.isSelected = true;
+        }
+    }
+    public void SetCoordinates(int xOffset, int zOffset)
+    {
+        Debug.Log("setting coords");
+        int newX = this.x + xOffset;
+        int newZ = this.z + zOffset;
+        this.DetectCollision(newX, newZ);
+        this.x = newX;
+        this.z = newZ;
+        Debug.Log(this.x);
+        Debug.Log(this.z);
+    }
+
+    void DetectCollision(int newX, int newZ)
+    {
+        PieceController[] pieces = this.transform.parent.transform.parent.GetComponentsInChildren<PieceController>();
+
+        foreach (PieceController piece in pieces)
+        {
+            if (piece.x == newX && piece.z == newZ)
+            {
+                Debug.Log("collision!!!!");
+                piece.RemovePiece();
+            }
         }
     }
     public void RemovePiece()

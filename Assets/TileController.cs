@@ -3,42 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TileController : MonoBehaviour {
-    public int x;
-    public int z;
-    public bool isColored;
+    public List<GameObject> Tiles = new List<GameObject>();
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+        this.BuildTiles(this.gameObject.transform);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    public void SetCoordinates(int xOffset, int zOffset)
-    {
-        Debug.Log("setting coords");
-        int newX = this.x + xOffset;
-        int newZ = this.z + zOffset;
-        this.DetectCollision(newX, newZ);
-        this.x = newX;
-        this.z = newZ;
-        Debug.Log(this.x);
-        Debug.Log(this.z);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform.name == "Tile")
+            {
+                foreach (GameObject tile in Tiles)
+                {
+                    tile.GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
+                }
+                hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            }
+        }
     }
 
-    void DetectCollision(int newX, int newZ)
-    {
-        TileController[] tiles = this.transform.parent.transform.parent.GetComponentsInChildren<TileController>();
 
-        foreach (TileController tile in tiles)
+    void BuildTiles(Transform board)
+    {
+        Debug.Log(board.position);
+        for (int x = -3; x <= 4; x++)
         {
-            if(tile.x == newX && tile.z == newZ)
+            for (int z = -3; z <= 4; z++)
             {
-                Debug.Log("collision!!!!");
-                tile.gameObject.GetComponent<PieceController>().RemovePiece();
+                GameObject tile = Instantiate(Resources.Load("TilePrefab") as GameObject);
+                tile.name = "Tile";
+                Tiles.Add(tile);
+                tile.GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
+                float newX = (x * 9 + 1);
+                float newZ = (z * 9 + 2);
+                tile.GetComponent<TileCoordinates>().x = x + 3;
+                tile.GetComponent<TileCoordinates>().z = z + 3;
+                tile.transform.position = new Vector3(newX, 9, newZ);
+                tile.transform.parent = board;
             }
         }
     }
