@@ -73,10 +73,17 @@ public class PieceController : MonoBehaviour // required interface when using th
 
         foreach (PieceController piece in pieces)
         {
+            Debug.Log("piece");
+            Debug.Log(piece);
             if (piece.x == newX && piece.z == newZ)
             {
                 Debug.Log("collision!!!!");
                 piece.RemovePiece();
+                if (piece.tag == "King")
+                {
+                    GameController game = piece.transform.parent.transform.parent.GetComponent<GameController>();
+                    game.EndGame(this.transform.parent.tag);
+                }
             }
         }
     }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public string winner = "";
 
 
     // Use this for initialization
     private void Start()
     {
-
     }
 
 
@@ -18,14 +18,24 @@ public class GameController : MonoBehaviour {
         PlayerController[] players = GetComponentsInChildren<PlayerController>();
         foreach (PlayerController player in players)
         {
-            if (player.GetComponentsInChildren<PieceController>().Length == 0)
-            {
-                Debug.Log("Game Over!!");
-            }
             player.isActive = !player.isActive;
         }
     }
 
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 100, 20), winner);
+    }
+
+    public void EndGame(string w)
+    {
+        this.winner = "Winner is " + w;
+        PieceController[] pieces = GetComponentsInChildren<PieceController>();
+        foreach (PieceController piece in pieces)
+        {
+            piece.RemovePiece();
+        }
+    }
 
 
 

@@ -7,7 +7,6 @@ public class TileController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        this.BuildTiles(this.gameObject.transform);
     }
 	
 	// Update is called once per frame
@@ -16,7 +15,7 @@ public class TileController : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.name == "Tile")
+            if (hit.transform.name == "TilePrefab")
             {
                 foreach (GameObject tile in Tiles)
                 {

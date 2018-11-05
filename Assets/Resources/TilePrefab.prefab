@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 33323613308029226}
   - component: {fileID: 65144576307947064}
   - component: {fileID: 23051260807978832}
+  - component: {fileID: 114775772993442730}
   m_Layer: 0
-  m_Name: TileColider
+  m_Name: TilePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1301234783818904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.11372, y: 7.0477114, z: 97.4}
-  m_LocalScale: {x: 1, y: 10, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114775772993442730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301234783818904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e275af5222b02664d9468dec83287116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  z: 0
