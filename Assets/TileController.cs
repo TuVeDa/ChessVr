@@ -17,6 +17,7 @@ public class TileController : MonoBehaviour {
         {
             if (hit.transform.name == "TilePrefab")
             {
+                Debug.Log("Pointing at a tile");
                 foreach (GameObject tile in Tiles)
                 {
                     tile.GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
@@ -27,15 +28,14 @@ public class TileController : MonoBehaviour {
     }
 
 
-    void BuildTiles(Transform board)
+    public void BuildTiles(Transform board)
     {
-        Debug.Log(board.position);
         for (int x = -3; x <= 4; x++)
         {
             for (int z = -3; z <= 4; z++)
             {
                 GameObject tile = Instantiate(Resources.Load("TilePrefab") as GameObject);
-                tile.name = "Tile";
+                tile.name = "Tile" + (x+3) + (z+3);
                 Tiles.Add(tile);
                 tile.GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
                 float newX = (x * 9 + 1);

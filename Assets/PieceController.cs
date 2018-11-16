@@ -57,14 +57,11 @@ public class PieceController : MonoBehaviour // required interface when using th
     }
     public void SetCoordinates(int xOffset, int zOffset)
     {
-        Debug.Log("setting coords");
         int newX = this.x + xOffset;
         int newZ = this.z + zOffset;
         this.DetectCollision(newX, newZ);
         this.x = newX;
         this.z = newZ;
-        Debug.Log(this.x);
-        Debug.Log(this.z);
     }
 
     void DetectCollision(int newX, int newZ)
@@ -73,11 +70,9 @@ public class PieceController : MonoBehaviour // required interface when using th
 
         foreach (PieceController piece in pieces)
         {
-            Debug.Log("piece");
-            Debug.Log(piece);
+
             if (piece.x == newX && piece.z == newZ)
             {
-                Debug.Log("collision!!!!");
                 piece.RemovePiece();
                 if (piece.tag == "King")
                 {

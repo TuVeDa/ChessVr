@@ -5,9 +5,10 @@ using UnityEngine;
 public class TileCoordinates : MonoBehaviour {
     public int x;
     public int z;
+    public Renderer rend;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -15,4 +16,11 @@ public class TileCoordinates : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnMouseDown()
+    {
+        Debug.Log("MouseDown");
+        rend = this.transform.gameObject.GetComponent<Renderer>();
+        rend.enabled = true;
+    }
 }

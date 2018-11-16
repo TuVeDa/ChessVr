@@ -16,7 +16,6 @@ public class QueenMoveSet : MonoBehaviour {
             MoveSet.Add(new Vector3(-x, 0, 0));
             MoveSet.Add(new Vector3(0, 0, -x));
         }
-        Debug.Log(MoveSet);
     }
 	
 	// Update is called once per frame
