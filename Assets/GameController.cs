@@ -24,7 +24,10 @@ public class GameController : MonoBehaviour {
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 20), winner);
+        int offset_x = Screen.width / 2 - 50;
+        int offset_y = Screen.height / 2 - 10;
+
+        GUI.Label(new Rect(offset_x, offset_y, 100, 20), winner);
     }
 
     public void EndGame(string w)
