@@ -53,6 +53,8 @@ public class PieceController : MonoBehaviour // required interface when using th
                 pieceController.isSelected = false;
             }
             this.isSelected = true;
+            List<Vector3> landingTiles = this.transform.GetComponent<PieceMoves>().CalculateLandingTiles(this.x, this.z);
+            this.transform.parent.transform.parent.GetComponentInChildren<TileController>().HighlightTiles(landingTiles);
         }
     }
     public void SetCoordinates(int xOffset, int zOffset)

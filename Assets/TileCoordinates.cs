@@ -19,6 +19,8 @@ public class TileCoordinates : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        Debug.Log(this.x);
+        Debug.Log(this.z);
         Debug.Log("MouseDown");
         rend = this.transform.gameObject.GetComponent<Renderer>();
         rend.enabled = true;

@@ -10,22 +10,7 @@ public class TileController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.transform.name == "TilePrefab")
-            {
-                Debug.Log("Pointing at a tile");
-                foreach (GameObject tile in Tiles)
-                {
-                    tile.GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
-                }
-                hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.blue;
-            }
-        }
-    }
+
 
 
     public void BuildTiles(Transform board)
@@ -46,5 +31,12 @@ public class TileController : MonoBehaviour {
                 tile.transform.parent = board;
             }
         }
+    }
+
+    public void HighlightTiles(List<Vector3> tilePositions)
+    {
+        Debug.Log("first possible landing position is");
+        Debug.Log("x:" + tilePositions[0].x);
+        Debug.Log("z:" + tilePositions[0].z);
     }
 }
