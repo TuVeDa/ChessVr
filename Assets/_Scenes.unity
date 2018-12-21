@@ -191,8 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  x: 5
-  z: 4
+  x: 4
+  z: 3
 --- !u!65 &29247841
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -205,6 +205,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.999999, y: 9.627722, z: 5.999999}
   m_Center: {x: 0, y: 4.81386, z: 0.00000047683716}
+--- !u!114 &29247843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 29247838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419fc08404c42b14595b37f97898c420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landingTiles: []
 --- !u!4 &29247845 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4191545686351694, guid: 324955c7d16593549905249f106a2d79,
@@ -347,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a470a222f24a69541afdead3d6a348d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winner: 
 --- !u!4 &621817797
 Transform:
   m_ObjectHideFlags: 0
@@ -552,6 +565,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 86.399994, y: 7.200004, z: 86.399994}
   m_Center: {x: 0, y: 3.5999997, z: 0}
+--- !u!114 &1328517643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1328517638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee49c7d3e8873340b90bfb0c7268597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tiles: []
 --- !u!1001 &1359055689
 Prefab:
   m_ObjectHideFlags: 0
@@ -680,8 +705,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  x: 4
-  z: 4
+  x: 3
+  z: 3
+--- !u!114 &1557302972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1557302968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419fc08404c42b14595b37f97898c420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landingTiles: []
 --- !u!65 &1557302973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -915,8 +952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  x: 4
-  z: 6
+  x: 3
+  z: 5
 --- !u!4 &1992358661 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4339093021501514, guid: 90dbf5bd517d6ba409c68f469c963dd8,
@@ -977,8 +1014,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  x: 5
-  z: 6
+  x: 4
+  z: 5
 --- !u!4 &2078427012 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4339093021501514, guid: 7495acd7831a51d49b42c0b3b075adaf,

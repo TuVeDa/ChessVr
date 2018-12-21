@@ -19,6 +19,8 @@ public class PieceMoves : MonoBehaviour {
 	}
 
     public List<Vector3> CalculateLandingTiles(int currentX, int currentZ) {
+        Debug.Log("currentX" + currentX);
+        Debug.Log("currentZ" + currentZ);
         Vector3 forward = new Vector3(currentX + 1, 0, currentZ);
         Vector3 forwardRight = new Vector3(currentX + 1, 0, currentZ + 1);
         Vector3 forwardLeft = new Vector3(currentX + 1, 0, currentZ - 1);

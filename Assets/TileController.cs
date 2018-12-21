@@ -15,6 +15,7 @@ public class TileController : MonoBehaviour {
 
     public void BuildTiles(Transform board)
     {
+        Debug.Log(board);
         for (int x = -3; x <= 4; x++)
         {
             for (int z = -3; z <= 4; z++)
@@ -28,15 +29,23 @@ public class TileController : MonoBehaviour {
                 tile.GetComponent<TileCoordinates>().x = x + 3;
                 tile.GetComponent<TileCoordinates>().z = z + 3;
                 tile.transform.position = new Vector3(newX, 9, newZ);
-                tile.transform.parent = board;
+                tile.transform.SetParent(board);
             }
         }
     }
 
     public void HighlightTiles(List<Vector3> tilePositions)
     {
-        Debug.Log("first possible landing position is");
-        Debug.Log("x:" + tilePositions[0].x);
-        Debug.Log("z:" + tilePositions[0].z);
+        TileCoordinates[] coords = this.GetComponentsInChildren<TileCoordinates>();
+        foreach (TileCoordinates coord in coords)
+        {
+            Vector3 tilePos = new Vector3(coord.x, 0, coord.z);
+            bool isPossibleMove = tilePositions.Contains(tilePos);
+            if (isPossibleMove)
+            {
+                coord.Highlight();
+            }
+        }
+
     }
 }

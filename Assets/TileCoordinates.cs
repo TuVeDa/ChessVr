@@ -17,11 +17,9 @@ public class TileCoordinates : MonoBehaviour {
 		
 	}
 
-    private void OnMouseDown()
+    public void Highlight()
     {
-        Debug.Log(this.x);
-        Debug.Log(this.z);
-        Debug.Log("MouseDown");
+        Debug.Log("Highlighting " + x + "x" + z);
         rend = this.transform.gameObject.GetComponent<Renderer>();
         rend.enabled = true;
     }

@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
     private void Start()
     {
         TileController tileBuilder = GetComponentInChildren<TileController>();
-        tileBuilder.BuildTiles(this.transform);
+        tileBuilder.BuildTiles(tileBuilder.transform);
     }
 
 
